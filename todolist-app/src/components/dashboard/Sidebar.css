@@ -1,0 +1,28 @@
+.sidebar {
+    background-color: #6f5cdb; 
+    color: white;
+    width: 250px; 
+    height: 100vh; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    padding: 20px; 
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+
+  }
+  .sidebar-links {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-links li {
+    margin: 20px 0;
+}
+
+.sidebar-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
