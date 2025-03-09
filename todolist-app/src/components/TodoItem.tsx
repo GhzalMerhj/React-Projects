@@ -1,3 +1,5 @@
+import {todos , Todos} from '../Data/Todos';
+
 const TodoItem = ()=>{
 
  return (

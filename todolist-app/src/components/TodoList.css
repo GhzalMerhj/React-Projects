@@ -14,5 +14,6 @@ th, td {
 } 
 td a {
     text-decoration: none;
-    color: black;
+    color: #6f5cdb;
+    font-weight: bold;
 } 
