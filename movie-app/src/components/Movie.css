@@ -1,0 +1,52 @@
+.card{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 10px;
+    background: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    min-height: 200px;
+}
+.card p {
+    text-align: center;
+    font-weight: bold;
+    color: #1201019e;
+}
+.card p span {
+    color:gray
+}
+.button-container {
+    display: flex;
+    gap: 10px; 
+    margin-top: auto;
+  }
+.button-container button{
+    font-size: 15px;
+    background: #741111c4;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 45px;
+    min-width: 100px;
+    color: white;
+   
+}  
+.button-container button.unwatched
+{
+    color: #741111c4;
+    background: white;
+    border: solid 1px #741111c4;
+}
+.button-container button.unwatched:hover{
+    color: white;
+    background-color: #741111c4;
+}
+.button-container button.watched:hover{
+    color: #741111c4;
+    background: white;
+    border: solid 1px #741111c4;
+
+}

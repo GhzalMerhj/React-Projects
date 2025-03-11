@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { IMovie } from "../types/IMovie";
+import './Movie.css';
 interface IMovieProps {
-    movie: IMovie
+    movie: IMovie,
+    addToWatchList: (movie: IMovie) => void,
 }
 
-const Movie: React.FC<IMovieProps> = ({movie}) => {
+const Movie: React.FC<IMovieProps> = ({movie , addToWatchList}) => {
 
+    const [status ,setStatus ] = useState(movie.status);
+
+   const toggleStatus = ()=>{
+         setStatus((prevStatus) => !prevStatus);
+         }
 
     return (
      <div className="card">
-     <span> title {movie.title}</span>
-     <span>( year ) { movie.year}</span>
-     <span> status {movie.status ? 'watched' : 'unwatched'}</span>
-     <button> Add To Watch List </button>
+     <p>  {movie.title} <span>(  { movie.year} ) </span> </p>
+      
+      <div className="button-container">
+        <button onClick={() => toggleStatus()}  className={ status ? 'watched' : 'unwatched' } >  {status ? 'watched' : 'unwatched'} </button>
+
+        <button onClick={() => addToWatchList(movie)}> Add To Watch List </button>
+      </div>
+     
      </div>
 
     )

@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import './App.css'
 import Movie from './components/Movie'
 import { IMovie } from './types/IMovie';
+import WatchMovie from './components/WatchMovie';
 const movies: IMovie[] = [
   {
     id: 1,
@@ -73,22 +75,51 @@ const movies: IMovie[] = [
     status: true
   }
 ];
+
+
+
 function App() {
+  const [watchlist, setWatchlist] = useState<IMovie[]>([]);
+  
+
+  const addToWatchList = (movie: IMovie) => {
+     if(!watchlist.some( (m)=> m.id === movie.id) ){
+      setWatchlist([...watchlist,movie]);
+     }
+  }
+  const removeFromWatchList = (movie: IMovie) => {
+      const updatedWatchList = watchlist.filter( (item) => item.id !== movie.id) ;
+       setWatchlist(updatedWatchList);
+  }
+  
   return (
     <>
-       <h2> Movies  </h2>
-    {
-   
-      movies.map( (movie , index) =>{
+    <div className="container">
+      <h2> Movies  </h2>
+      <div className="movie-list">
+      { movies.map( (movie) =>{
 
-       return  <Movie movie={movie} key={index}/> 
+       return  <Movie movie={movie} key={movie.id} addToWatchList={addToWatchList} /> 
       })
-    }
-     
+       }
+      </div>
+      
+    </div>
+       
+   
+    <div className="container">
      <h2> Watch List </h2>
      {
-        
+        <div className="movie-list">
+      { 
+       watchlist.map( (movie) =>{
+
+       return  <WatchMovie movie={movie} key={movie.id} removeFromWatchList={removeFromWatchList}/> 
+      })
+       }
+      </div>
      }
+    </div>
 
     </>
   )
