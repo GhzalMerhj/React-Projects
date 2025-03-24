@@ -1,8 +1,13 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from 'react';
-import './App.css'
-import Movie from './components/Movie'
+import './App.css';
+import Movie from './components/Movie';
 import { IMovie } from './types/IMovie';
 import WatchMovie from './components/WatchMovie';
+import Header from './components/Header';
+import RegisterForm from './components/RegisterForm';
+
 const movies: IMovie[] = [
   {
     id: 1,
@@ -78,7 +83,7 @@ const movies: IMovie[] = [
 
 
 
-function App() {
+const App: React.FC = () => {
   const [watchlist, setWatchlist] = useState<IMovie[]>([]);
   
 
@@ -93,7 +98,10 @@ function App() {
   }
   
   return (
-    <>
+    <Router>
+    <div className="container">
+         <Header />
+    </div>
     <div className="container">
       <h2> Movies  </h2>
       <div className="movie-list">
@@ -105,8 +113,6 @@ function App() {
       </div>
       
     </div>
-       
-   
     <div className="container">
      <h2> Watch List </h2>
      {
@@ -120,9 +126,13 @@ function App() {
       </div>
      }
     </div>
+    
+    <Routes>
+      <Route path='/'  />
+      <Route path='register'  element={<RegisterForm />} />
+    </Routes>
+    </Router>
+  );
+};
 
-    </>
-  )
-}
-
-export default App
+export default App;
